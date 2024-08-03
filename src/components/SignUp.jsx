@@ -29,37 +29,35 @@ const SignUp = ({ open, setOpen }) => {
   const closeModal = () => setOpen(false); //to close the modal
 
   const onSubmit = async (data) => {
-    let URL = null
+    let URL = null;
     if (isRegister) {
-      URL = "companies/register";
+      URL = "user/register";
     } else {
-      URL = "companies/login";
+      URL = "user/login";
     }
 
     try {
       const res = await apiRequest({
         url: URL,
         data: data,
-        method: "POST"
-      })
+        method: "POST",
+      });
 
-      console.log(res)
+      console.log(res);
 
       if (res?.status === "failed") {
         setErrMsg(res?.message);
       } else {
-        setErrMsg("")
+        setErrMsg("");
         const data = { token: res?.token, ...res?.user };
-        dispatch(Login(data))
+        dispatch(Login(data));
         localStorage.setItem("userInfo", JSON.stringify(data));
-        window.location.replace(from)
+        window.location.replace(from);
       }
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
-  //   return <div>SignUp</div>
   return (
     <>
       <Transition appear show={true}>
@@ -93,30 +91,6 @@ const SignUp = ({ open, setOpen }) => {
                   >
                     {isRegister ? "Create Account" : "Account Sign In"}
                   </Dialog.Title>
-                  {/* <div className="w-full flex items-center justify-center py-4 ">
-                    <button
-                      className={`flex-1 px-4 py-2 rounded text-sm outline-none ${
-                        //If the account is Seeker then set bg to blue else white
-                        accountType === "seeker"
-                          ? "bg-[#C0C0C0] text-black font-semibold"  
-                          : "bg-white border border-black"
-                      }`}
-                      onClick={() => setAccountType("seeker")}
-                    >
-                      User Account
-                    </button>
-                    <button
-                      className={`flex-1 px-4 py-2 rounded text-sm outline-none ${
-                        //If the account is !=Seeker ie Company then set bg to blue else white
-                        accountType !== "seeker"
-                          ? "bg-[#C0C0C0] text-black font-semibold"
-                          : "bg-white border border-black"
-                      }`}
-                      onClick={() => setAccountType("company")}
-                    >
-                      Company Account
-                    </button>
-                  </div> */}
 
                   <form
                     className="w-full flex flex-col gap-5 mt-2"
@@ -135,29 +109,17 @@ const SignUp = ({ open, setOpen }) => {
 
                     {isRegister && (
                       <div className="w-full flex gap-1 md:gap-2">
-                        <div
-                          className={"w-1/2"}
-                        >
+                        <div className={"w-1/2"}>
                           <TextInput
-                            name={
-                              "firstName"
-                            }
-                            label={
-                              "First Name"
-                            }
-                            placeholder={
-                              "eg. James"
-                            }
+                            name={"firstName"}
+                            label={"First Name"}
+                            placeholder={"eg. James"}
                             type="text"
-                            register={register("firstName",
-                              {
-                                required: "First Name is required",
-                              }
-                            )}
+                            register={register("firstName", {
+                              required: "First Name is required",
+                            })}
                             error={
-                              errors.firstName
-                                ? errors.firstName?.message
-                                : ""
+                              errors.firstName ? errors.firstName?.message : ""
                             }
                           />
                         </div>
@@ -214,7 +176,7 @@ const SignUp = ({ open, setOpen }) => {
                             })}
                             error={
                               errors.cPassword &&
-                                errors.cPassword.type === "validate"
+                              errors.cPassword.type === "validate"
                                 ? errors.cPassword?.message
                                 : ""
                             }

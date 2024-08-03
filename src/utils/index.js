@@ -45,6 +45,23 @@ export const handleFileUpload = async(uploadFile)=>
         console.log(error);
     }
 }
+export const handleRawFileUpload = async(uploadFile)=>
+{
+    const formData = new FormData();
+    formData.append("file",uploadFile);
+    formData.append("upload_preset","atpsokqr");
+
+    try{
+        const response = await axios.post(
+            "https://api.cloudinary.com/v1_1/anonymous25/raw/upload",
+            formData
+        );
+        return response.data.secure_url;
+    } catch(error)
+    {
+        console.log(error);
+    }
+}
 
 export const updateURL =({
     pageNum,
@@ -85,8 +102,9 @@ export const updateURL =({
     {
         params.set("exp",exp);
     }
-
+    
     const newURL = `${location.pathname}?${params.toString()}`;
+    console.log(newURL);
     navigate(newURL,{replace:true});
 
     return newURL;

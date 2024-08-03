@@ -10,11 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vite": "^4.4.5",
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.1",
     "cloudinary": "^1.41.0",
+    "paypal-rest-sdk": "^1.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",

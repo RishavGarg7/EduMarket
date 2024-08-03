@@ -3,13 +3,11 @@ import { Footer, Navbar } from "./components";
 import {
   About,
   AuthPage,
-  Companies,
-  CompanyProfile,
-  FindJobs,
-  JobDetail,
-  UploadJob,
+  Users,
   UserProfile,
-  Application
+  FindProjects,
+  ProjectDetail,
+  UploadProject,
 } from "./pages";
 import { useSelector } from "react-redux";
 
@@ -17,7 +15,7 @@ function Layout() {
   //const user = true;
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
-  console.log(user)
+  console.log(user);
 
   return user?.token ? (
     <Outlet />
@@ -29,8 +27,7 @@ function Layout() {
 function App() {
   const { user } = useSelector((state) => state.user);
   return (
-    <main className='bg-[#f7fdfd]'>
-    
+    <main className="bg-[#f7fdfd]">
       <Navbar />
 
       <Routes>
@@ -38,24 +35,14 @@ function App() {
         <Route element={<Layout />}>
           <Route
             path="/"
-            element={<Navigate to="/find-jobs" replace={true} />}
+            element={<Navigate to="/find-projects" replace={true} />}
           />
-          <Route path="/find-jobs" element={<FindJobs />} />
-          <Route path="/companies" element={<Companies />} />
-          {/* <Route
-            path={
-              user?.accountType === "seeker"
-                ? "/user-profile"
-                : "/user-profile/:id"
-            }
-            element={<UserProfile />}
-          /> */}
-
-          <Route path={"/company-profile"} element={<CompanyProfile />} />
-          <Route path={"/company-profile/:id"} element={<CompanyProfile />} />
-          <Route path={"/applications"} element={<Application />} />
-          <Route path={"/upload-job"} element={<UploadJob />} />
-          <Route path={"/job-detail/:id"} element={<JobDetail />} />
+          <Route path="/find-projects" element={<FindProjects />} />
+          <Route path="/user" element={<Users />} />
+          <Route path={"/user-profile"} element={<UserProfile />} />
+          <Route path={"/user-profile/:id"} element={<UserProfile />} />
+          <Route path={"/upload-project"} element={<UploadProject />} />
+          <Route path={"/project-detail/:id"} element={<ProjectDetail />} />
         </Route>
 
         {/* <Route path="/about-us" element={<About />} /> */}
@@ -63,7 +50,7 @@ function App() {
       </Routes>
       {/* Pages accessible when NOT authenticated*/}
 
-      {user && <Footer />} 
+      {user && <Footer />}
       {/*Shows footer only when logged in */}
     </main>
   );

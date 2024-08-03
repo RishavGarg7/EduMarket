@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { CompanyCard, CustomButton, Header, ListBox, Loading } from "../components";
+import { UserCard, CustomButton, Header, ListBox, Loading } from "../components";
 import { apiRequest, updateURL } from "../utils";
 
-const Companies = () => {
+const Users = () => {
   /* React States */
   const [page, setPage] = useState(1);
   const [numPage, setNumPage] = useState(1);
@@ -82,8 +82,8 @@ const Companies = () => {
         </div>
 
         <div className="w-full flex flex-col gap-6">
-          {data?.map((cmp, index) => (
-            <CompanyCard cmp={cmp} key={index} />
+          {data?.map((user, index) => (
+            <UserCard user={user} key={index} />
           ))}
 
           {isFetching && (
@@ -111,4 +111,4 @@ const Companies = () => {
   );
 };
 
-export default Companies;
+export default Users;

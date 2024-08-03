@@ -1,21 +1,17 @@
-import FindJobs from "./FindProjects";
+import FindProjects from "./FindProjects";
 import AuthPage from "./Auth";
-import Companies from "./Users";
+import Users from "./Users";
 import UserProfile from "./UserProfile";
-import CompanyProfile from "./CompanyProfile";
-import UploadJob from "./UploadProject";
+import UploadProject from "./UploadProject";
 import About from "./About";
-import JobDetail from "./ProjectDetail";
-import Application from "./Application"
+import ProjectDetail from "./ProjectDetail"
 
 export {
-  FindJobs,
+  FindProjects,
   AuthPage,
-  Companies,
+  Users,
   UserProfile,
-  CompanyProfile,
-  UploadJob,
+  UploadProject,
   About,
-  JobDetail,
-  Application
+  ProjectDetail
 };
