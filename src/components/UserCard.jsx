@@ -24,7 +24,7 @@ const UserCard = ({ user }) => {
       </div>
 
       <div className='hidden w-2/4 h-full md:flex items-center'>
-        <p className='text-base text-start'>{user?.about.slice(0, 40) + "..."}</p>
+        <p className='text-base text-start'>{user?.about?.slice(0, 40) + "..."}</p>
       </div>
 
       <div className='w-1/4 h-full flex flex-col items-center'>
